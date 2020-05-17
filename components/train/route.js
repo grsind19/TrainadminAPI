@@ -1,12 +1,11 @@
 const express = require("express")
-const router = express.Router()
+const Router = express.Router
 const handler=require('./handler')
+const router = new Router()
 
-router.get('/train/:trainId', handler.getTrain)
-router.post('/train', handler.addTrain)
-router.put('/train/:trainId', handler.updateTrain)
+router.get('/', handler.getTrains)
+router.get('/:trainId', handler.getTrain)
+router.post('/', handler.addTrain)
+router.put('/:trainId', handler.updateTrain)
 
-const routes = function(app){
-  
-
-}
+module.exports = router

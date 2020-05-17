@@ -1,5 +1,5 @@
-const uuid = require("uuid/v1")
-module.exports = function(req, res, nex){
-  req.requestId = uuid();
+const { v4: uuidv4 } = require("uuid")
+module.exports = function(req, res, next){
+  req.requestId = uuidv4();
   next()
 }
