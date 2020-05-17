@@ -1,8 +1,18 @@
 const express = require('express')
 var bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 const requestId = require('./middlewares/requestId')
 const errorHandler = require('./middlewares/errorhandler')
 const TrainRoutes = require('./components/train/route')
+
+//connect to database
+mongoose.connect('mongodb://localhost:27017/myapp', {useNewUrlParser: true})
+  .then((data)=>{
+    console.log("Database connection successfull")
+  })
+  .catch(e=>{
+    console.log("Database connection failed")
+  })
 
 // create application/json parser
 var jsonParser = bodyParser.json()

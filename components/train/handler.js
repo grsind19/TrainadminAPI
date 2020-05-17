@@ -1,19 +1,41 @@
-const getTrain = (req, res, next)=>{
-  console.log(req.requestId);
-  res.send("success")
+
+const controller = require('./controller')
+const logger = require('../../utilities/logger')
+
+const getTrain = async (req, res, next)=>{
+  try {
+    const result = await controller.getTrain(req.body);
+    res.json(result)
+  } catch (error) {
+    next(error)
+  }
 }
 
-const getTrains = (req, res, next)=>{
-  console.log(req.requestId);
-  res.send("success")
+const getTrains = async (req, res, next)=>{
+  try {
+    const result = await controller.getTrains(req.body);
+    res.json(result)
+  } catch (error) {
+    next(error)
+  }
 }
 
-const addTrain = (req, res, next)=>{
-
+const addTrain = async (req, res, next)=>{
+  try {
+    const train = await controller.addTrain(req.body);
+    res.json(train)
+  } catch (error) {
+    next(error)
+  }
 }
 
-const updateTrain = (req, res, next)=>{
-  
+const updateTrain = async (req, res, next)=>{
+  try {
+    const result = await controller.updateTrain(req.body);
+    res.json(result)
+  } catch (error) {
+    next(error)
+  }
 }
 
 exports.getTrain = getTrain
