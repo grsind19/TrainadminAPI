@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const requestId = require('./middlewares/requestId')
 const errorHandler = require('./middlewares/errorhandler')
 const TrainRoutes = require('./components/train/route')
+const StationRoutes = require('./components/station/route')
 
 //connect to database
 mongoose.connect('mongodb://localhost:27017/myapp', {useNewUrlParser: true})
@@ -31,6 +32,7 @@ app.use(requestId)
 
 //setup routes
 app.use('/train',TrainRoutes)
+app.use('/station',StationRoutes)
 
 //Adding error handler
 app.use(errorHandler)
