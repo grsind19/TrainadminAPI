@@ -4,7 +4,7 @@ const promisify = require('util').promisify
 const validate = promisify(Joi.validate).bind(Joi)
 const service = require('./service')
 const trainDataSchema = require('./validator')
-const redis = require('../../redis/init')
+
 
 const getTrain = async (data)=>{
   try {
@@ -37,7 +37,6 @@ const addTrain = async (data)=>{
 const updateTrain = async (data)=>{
   try {
     const train = await service.updateTrain(data);
-    redis.updateStation({action:"update", data});
     return train;
   } catch (error) {
     throw error

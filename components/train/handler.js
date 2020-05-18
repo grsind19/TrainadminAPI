@@ -1,10 +1,11 @@
 
 const controller = require('./controller')
 const logger = require('../../utilities/logger')
+const redis = require('../../redis/init')
 
 const getTrain = async (req, res, next)=>{
   try {
-    Object.assign(req.body, req.params);
+    
     const result = await controller.getTrain(req.body);
     res.json(result)
   } catch (error) {
@@ -14,7 +15,8 @@ const getTrain = async (req, res, next)=>{
 
 const getTrains = async (req, res, next)=>{
   try {
-    const result = await controller.getTrains(req.body);
+    const query = req.query.currentStation ?  {currentStation:req.query.currentStation.toLowerCase()} : {}
+    const result = await controller.getTrains(query);
     res.json(result)
   } catch (error) {
     next(error)
@@ -34,6 +36,7 @@ const updateTrain = async (req, res, next)=>{
   try {
     Object.assign(req.body, req.params);
     const result = await controller.updateTrain(req.body);
+    redis.updateStation({action:"update", data: result});
     res.json(result)
   } catch (error) {
     next(error)

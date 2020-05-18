@@ -6,7 +6,7 @@ var io = require('socket.io')(http);
 const socket = require('./socket/init')
 const redis = require('./redis/init')
 
-//Setup the http[ server
+//Setup the http server
 server.listen(PORT,()=>{
   console.log(`Server has started at ${PORT}`)
 })

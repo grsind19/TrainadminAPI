@@ -10,9 +10,9 @@ const getTrain = async (data)=>{
   }
 }
 
-const getTrains = async ()=>{
+const getTrains = async (data)=>{
   try {
-    const trains = await Train.find()
+    const trains = await Train.find(data)
     return trains;
   } catch (error) {
     throw error
