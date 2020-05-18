@@ -6,7 +6,7 @@ socket.on('connect', function () {
   socket.emit('join', 'listen');
 });
 socket.on('message', function (data) {
-  console.log('Incoming message:', JSON.parse(data));
+  console.log('Incoming message:',data);
 });
 socket.on('disconnect', function () {
   console.log('disconnected')
