@@ -6,11 +6,21 @@ const service = require('./service')
 const trainDataSchema = require('./validator')
 
 const getTrain = async (data)=>{
-  return data;
+  try {
+    const trains = await service.getTrain(data);
+    return trains;
+  } catch (error) {
+    throw error
+  }
 }
 
 const getTrains = async (data)=>{
-  return data;
+  try {
+    const trains = await service.getTrains(data);
+    return trains;
+  } catch (error) {
+    throw error
+  }
 }
 
 const addTrain = async (data)=>{
@@ -24,7 +34,12 @@ const addTrain = async (data)=>{
 }
 
 const updateTrain = async (data)=>{
-  return data;
+  try {
+    const train = await service.updateTrain(data);
+    return train;
+  } catch (error) {
+    throw error
+  }
 }
 
 exports.getTrain = getTrain

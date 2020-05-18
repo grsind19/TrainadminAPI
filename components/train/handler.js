@@ -4,6 +4,7 @@ const logger = require('../../utilities/logger')
 
 const getTrain = async (req, res, next)=>{
   try {
+    Object.assign(req.body, req.params);
     const result = await controller.getTrain(req.body);
     res.json(result)
   } catch (error) {
@@ -31,6 +32,7 @@ const addTrain = async (req, res, next)=>{
 
 const updateTrain = async (req, res, next)=>{
   try {
+    Object.assign(req.body, req.params);
     const result = await controller.updateTrain(req.body);
     res.json(result)
   } catch (error) {

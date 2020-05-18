@@ -6,7 +6,9 @@ const TrainSchema = new Schema({
   name :{
     type: String,
     unique: true,
-    required: true
+    required: true,
+    lowercase: true, 
+    trim: true
   },
   from: {
     type: String,
@@ -27,6 +29,13 @@ const TrainSchema = new Schema({
 });
 
 TrainSchema.plugin(uniqueValidator)
+TrainSchema.set('toJSON', {
+  transform: function (doc, ret, options) {
+      ret.id = ret._id;
+      delete ret._id;
+      delete ret.__v;
+  }
+}); 
 
 const Train = mongoose.model('Train', TrainSchema)
 
