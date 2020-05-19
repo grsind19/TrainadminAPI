@@ -3,7 +3,7 @@ const _ = require("lodash")
 
 const getStation = async (data)=>{
   try {
-    const station = await Station.find({_id: data.stationId})
+    const station = await Station.findOne({_id: data.stationId})
     return station;
   } catch (error) {
     return error

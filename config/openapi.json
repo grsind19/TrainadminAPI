@@ -1,0 +1,363 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "title" : "Train Scheduler API",
+    "description" : "This is a simple API",
+    "contact" : {
+      "email" : "grsind19@gmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version" : "1.0.0"
+  },
+  "servers" : [ {
+    "url" : "http://localhost:4000",
+    "description" : "API"
+  } ],
+  "tags" : [ {
+    "name" : "Train",
+    "description" : "Train API's"
+  }, {
+    "name" : "Station",
+    "description" : "Train API's"
+  } ],
+  "paths" : {
+    "/train" : {
+      "get" : {
+        "tags" : [ "Train" ],
+        "summary" : "get trains",
+        "description" : "Adding a new train to the list\n",
+        "operationId" : "get trains",
+        "parameters" : [ {
+          "name" : "currentStation",
+          "in" : "query",
+          "description" : "Look trains for certain station",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Train"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "bad input parameter"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Train" ],
+        "summary" : "add a train to list",
+        "description" : "Adds a train to list",
+        "operationId" : "addTrain",
+        "requestBody" : {
+          "description" : "Train item to add",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TrainCreateRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Add a train to list",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Train"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
+    "/train/{trainId}" : {
+      "get" : {
+        "tags" : [ "Train" ],
+        "summary" : "get a train",
+        "description" : "Get a train from list\n",
+        "operationId" : "getTrain",
+        "parameters" : [ {
+          "name" : "trainId",
+          "in" : "path",
+          "description" : "ID of the train to get",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Train"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "bad input parameter"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Train" ],
+        "summary" : "update a train",
+        "description" : "Update a train from list\n",
+        "operationId" : "updateTrain",
+        "parameters" : [ {
+          "name" : "trainId",
+          "in" : "path",
+          "description" : "ID of the train to get",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "description" : "Send only the parameter which needs to be updated. If you want to update both keep both else remove the other one.",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TrainUpdateRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "update results matching criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Train"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
+    "/station" : {
+      "get" : {
+        "tags" : [ "Station" ],
+        "summary" : "get stations",
+        "description" : "Get stations list\n",
+        "operationId" : "getStations",
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Station"
+                  }
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "bad input parameter"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Station" ],
+        "summary" : "add a station to list",
+        "description" : "Adds a station to list",
+        "operationId" : "addStation",
+        "requestBody" : {
+          "description" : "Inventory item to add",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/StationCreateRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Add a new station",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Station"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
+    "/station/{stationId}" : {
+      "get" : {
+        "tags" : [ "Station" ],
+        "summary" : "get a station",
+        "description" : "Get a station from list\n",
+        "operationId" : "getStation",
+        "parameters" : [ {
+          "name" : "stationId",
+          "in" : "path",
+          "description" : "ID of the station to get",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Station"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Train" : {
+        "required" : [ "currentStation", "from", "id", "isRunning", "name", "to" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string",
+            "example" : "Uzhavan"
+          },
+          "from" : {
+            "type" : "string",
+            "example" : "Chennai"
+          },
+          "to" : {
+            "type" : "string",
+            "example" : "Tanjore"
+          },
+          "currentStation" : {
+            "type" : "string",
+            "example" : "Tanjore"
+          },
+          "isRunning" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "TrainCreateRequest" : {
+        "required" : [ "currentStation", "from", "isRunning", "name", "to" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "example" : "Uzhavan"
+          },
+          "from" : {
+            "type" : "string",
+            "example" : "Chennai"
+          },
+          "to" : {
+            "type" : "string",
+            "example" : "Tanjore"
+          },
+          "currentStation" : {
+            "type" : "string",
+            "example" : "Tanjore"
+          },
+          "isRunning" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "TrainUpdateRequest" : {
+        "type" : "object",
+        "properties" : {
+          "currentStation" : {
+            "type" : "string",
+            "example" : "Tanjore"
+          },
+          "isRunning" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "Station" : {
+        "required" : [ "code", "id", "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string",
+            "example" : "Chennai"
+          },
+          "code" : {
+            "type" : "string",
+            "example" : "MAS"
+          }
+        }
+      },
+      "StationCreateRequest" : {
+        "required" : [ "code", "name" ],
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "example" : "Chennai"
+          },
+          "code" : {
+            "type" : "string",
+            "example" : "MAS"
+          }
+        }
+      }
+    }
+  }
+}

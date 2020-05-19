@@ -19,6 +19,7 @@
     "redis": "^3.0.2",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
+    "swagger-ui-express": "^4.1.4",
     "uuid": "^8.0.0",
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^4.4.2"

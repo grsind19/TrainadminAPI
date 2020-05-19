@@ -3,7 +3,7 @@ const _ = require("lodash")
 
 const getTrain = async (data)=>{
   try {
-    const train = await Train.find({_id: data.trainId})
+    const train = await Train.findOne({_id: data.trainId})
     return train;
   } catch (error) {
     return error

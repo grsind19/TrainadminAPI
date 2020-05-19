@@ -38,6 +38,24 @@ node socket/client.js
 The moment the update gets triggered the client will receive the ne train data for that station we subscribed
 ```
 
+# access the client app
+```
+http://localhost:4000/app
+```
+- Onload use does not see any trains
+- Select a station he will seeing the trains on that station
+- Update the particular train using swagger, the client will update realtime
+- Update the currentStation of the train, it will remove it from the list
+- Add a new train to the selected station, it will show up on the list
+- Everything works on based on socket connections
+
+# access the swagger app
+```
+http://localhost:4000/api-docs
+```
+- Use to create/get/update train(s)
+- Use to create/get startion(s)
+
 
 ### Postman Collection
 

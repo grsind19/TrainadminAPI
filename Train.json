@@ -94,12 +94,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:400/train",
+							"raw": "http://localhost:4000/train",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "400",
+							"port": "4000",
 							"path": [
 								"train"
 							]
@@ -137,6 +137,26 @@
 							"port": "4000",
 							"path": [
 								"train"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetTrain",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/train/5ec44434d11e2d0a9d80dd35",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"train",
+								"5ec44434d11e2d0a9d80dd35"
 							]
 						}
 					},
@@ -197,6 +217,26 @@
 							"port": "4000",
 							"path": [
 								"station"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetStation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/station/5ec4440bd11e2d0a9d80dd33",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"station",
+								"5ec4440bd11e2d0a9d80dd33"
 							]
 						}
 					},

@@ -5,6 +5,7 @@ const redis = require('../../redis/init')
 
 const getTrain = async (req, res, next)=>{
   try {
+    Object.assign(req.body, req.params);
     const result = await controller.getTrain(req.body);
     res.json(result)
   } catch (error) {

@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const db = require('./config/dbconnect')
+const swagger = require('./config/swagger')
 const requestId = require('./middlewares/requestId')
 const errorHandler = require('./middlewares/errorhandler')
 const TrainRoutes = require('./components/train/route')
@@ -33,5 +34,8 @@ app.use('/station',StationRoutes)
 
 //Adding error handler
 app.use(errorHandler)
+
+//adding swagger
+swagger.init(app)
 
 module.exports = app
