@@ -39,5 +39,9 @@ The moment the update gets triggered the client will receive the ne train data f
 ```
 
 
+### Postman Collection
+
+- Import Train.json to postman to work with the API's
+
 
 
