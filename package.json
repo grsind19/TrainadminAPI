@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout 5000 --exit --reporter spec test/**/*.js",
+    "start": "HTTP_PORT=4000 SOCKET_PORT=4001 node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -21,5 +22,12 @@
     "uuid": "^8.0.0",
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^4.4.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "faker": "^4.1.0",
+    "mocha": "^7.1.2",
+    "sinon": "^9.0.2"
   }
 }

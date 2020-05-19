@@ -1,18 +1,20 @@
 const app = require('./app')
 const http = require('http');
 const server = http.createServer(app)
-const PORT = process.env.PORT || 3001
+const HTTP_PORT = process.env.HTTP_PORT || 3000
+const SOCKET_PORT = process.env.SOCKET_PORT || 3000
 var io = require('socket.io')(http);
 const socket = require('./socket/init')
 const redis = require('./redis/init')
 
 //Setup the http server
-server.listen(PORT,()=>{
-  console.log(`Server has started at ${PORT}`)
+server.listen(HTTP_PORT,()=>{
+  console.log(`Web server has started at ${HTTP_PORT}`)
 })
 
 //setup the websocket server
-io.listen(3002)
+io.listen(SOCKET_PORT)
+console.log(`Socket server has started at ${SOCKET_PORT}`)
 
 //Initialise websocket connection
 socket.init(io)
