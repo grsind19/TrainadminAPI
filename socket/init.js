@@ -5,9 +5,10 @@ const logger = require('../utilities/logger')
 exports.init = (io) => {
   io.on('connection', function (socket) {
     logger.info('user connected')
-    const currentStation = socket.request._query['station']
-    sendOnloadData({socket, currentStation});
-    
+    if(socket.request._query && socket.request._query['station']){
+      const currentStation = socket.request._query['station']
+      sendOnloadData({socket, currentStation});
+    }
     socket.on('join', function (station) {
       logger.info(`joining station pool ${station}`);
       socket.join(station);

@@ -20,7 +20,8 @@ const TrainSchema = new Schema({
   },
   currentStation: {
     type: String,
-    required: true
+    required: true,
+    lowercase: true
   },
   isRunning: {
     type: Boolean,

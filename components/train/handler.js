@@ -5,7 +5,6 @@ const redis = require('../../redis/init')
 
 const getTrain = async (req, res, next)=>{
   try {
-    
     const result = await controller.getTrain(req.body);
     res.json(result)
   } catch (error) {
@@ -26,6 +25,7 @@ const getTrains = async (req, res, next)=>{
 const addTrain = async (req, res, next)=>{
   try {
     const train = await controller.addTrain(req.body);
+    redis.updateStation({action:"add", data: train});
     res.json(train)
   } catch (error) {
     next(error)

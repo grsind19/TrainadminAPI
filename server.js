@@ -1,8 +1,8 @@
 const app = require('./app')
 const http = require('http');
 const server = http.createServer(app)
-const HTTP_PORT = process.env.HTTP_PORT || 3000
-const SOCKET_PORT = process.env.SOCKET_PORT || 3000
+const HTTP_PORT = process.env.HTTP_PORT || 4000
+const SOCKET_PORT = process.env.SOCKET_PORT || 4001
 var io = require('socket.io')(http);
 const socket = require('./socket/init')
 const redis = require('./redis/init')

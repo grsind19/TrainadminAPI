@@ -24,6 +24,8 @@ app.use(urlencodedParser)
 //Adding Middleware
 app.use(requestId)
 
+//serve public html
+app.use('/app',express.static('public'))
 
 //setup routes
 app.use('/train',TrainRoutes)
